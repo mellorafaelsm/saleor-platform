@@ -2,7 +2,7 @@ services:
   api:
     image: ghcr.io/saleor/saleor:3.22
     ports:
-      - 8000:8000
+      - 8010:8000
     restart: unless-stopped
     networks:
       - saleor-backend-tier
@@ -25,13 +25,13 @@ services:
   dashboard:
     image: ghcr.io/saleor/saleor-dashboard:latest
     ports:
-      - 9000:80
+      - 7010:7000
     restart: unless-stopped
 
   db:
     image: library/postgres:15-alpine
     ports:
-      - 5432:5432
+      - 5433:5432
     restart: unless-stopped
     networks:
       - saleor-backend-tier
@@ -45,7 +45,7 @@ services:
   redis:
     image: library/redis:7.0-alpine
     ports:
-      - 6379:6379
+      - 6380:6379
     restart: unless-stopped
     networks:
       - saleor-backend-tier
